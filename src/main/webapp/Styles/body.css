@@ -1,0 +1,57 @@
+@charset "ISO-8859-1";
+
+.row {
+	background: var(--xslightGreen);
+}
+
+.row::after {
+	content: "";
+	display: table;
+	clear: both;	
+}
+
+/* Create two unequal columns that floats next to each other */
+
+/* left column */
+.leftcolumn {
+	float: left;
+	width: 75%;
+}
+
+.rigthcolumn {
+	float: right;
+	width: 25%;
+	background-color: var(--xslightGreen);
+	padding-left: 20px;
+}
+
+/* image */
+.img {
+	background-color: var(--weightGreen);
+	width: 100%;
+	padding: 20px;
+}
+
+
+/* Add a card effect for articles */
+.card {
+	background-color: var(--xslightGreen);
+	padding: 20px;
+	margin-top: 20px;
+	color: var(--primaryGreen);
+}
+
+.card .img img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+/* Responsive layout - when the screen is less than 678px wide,
+make the tow columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 678px) {
+	.leftcolumn, .rightcolumn {
+		width: 100%;
+		padding: 0;
+	}
+}

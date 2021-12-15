@@ -1,0 +1,19 @@
+@charset "ISO-8859-1";
+
+* {
+	box-sizing: border-box;
+}
+
+* {
+	font-family: Arial;
+	background: #EBF7E3;
+}
+
+:root {
+	--xslightGreen: #EBF7E3;
+	--lightGreen: #9BD770;
+	--primaryGreen: #66B032;
+	--weightGreen: #375F1B;
+	--boldGreen: #1B3409;
+	--black: #333;
+}

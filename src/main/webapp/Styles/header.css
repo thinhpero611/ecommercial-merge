@@ -1,0 +1,23 @@
+@charset "ISO-8859-1";
+
+/* Header/Blog Title */
+.header {
+	padding: 30px;
+	text-align: left;
+	background-color: var(--white);
+}
+
+.header h1 {
+	font-size: 50px;
+	color: var(--primaryGreen);
+}
+
+.header h1 .colorWord {
+	background: var(--xslightGreen);
+	color: var(--boldGreen);
+}
+.header h5 {
+	color: var(--weightGreen);
+	margin-top: -10px;
+} 
+

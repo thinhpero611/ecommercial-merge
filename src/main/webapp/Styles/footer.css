@@ -1,0 +1,83 @@
+@charset "ISO-8859-1";
+
+
+/* footer */
+.footer::before {
+	display: block;
+}
+.footer {
+/* 	padding: 20px; */
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 20px;
+/* 	color: var(--xslightGreen); */
+}
+
+/* create the first inner flex-box in footer */
+.footer .about {
+	flex-basis: 300px;
+	text-align: center;
+}
+
+/* create the second inner flex-box in footer */
+.footer .links {
+	flex-basis: 300px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	text-align: center;
+}
+
+/* first inner flex-box in links */
+.footer .links .first-inner {
+	display: flex;
+	justify-content: space-around;
+}
+
+/* create an inner inner flex-box inside links */
+.footer .links .first-inner > div {
+	display: flex;
+	flex-direction: column;
+}
+
+/* create the third inner flex-box in footer */
+.footer .contact {
+	flex-basis: 300px;
+	text-align: center;
+	flex-direction: column;
+	align-items: flex-start;
+	display: flex;
+}
+
+.footer .about h1, 
+.footer .about p,
+.footer .about .social-icon i,
+.footer .links .first-inner > div a, 
+.footer .links h3, 
+.footer .contact h3, 
+.footer .contact a,
+.footer .contact .payment i,
+.footer .last-child > p {
+	color: var(--boldGreen);
+	text-decoration: none;	
+}
+
+.footer .links .first-inner > div a, 
+.footer .contact a {
+	padding-bottom: 10px;
+}
+
+.footer .last-child {
+	margin-top: 20px;
+	flex-basis: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.footer .last-child > p {
+	margin-top: -8px;
+	font-size: 17px;
+}
+
+

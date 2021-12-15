@@ -1,0 +1,41 @@
+@charset "ISO-8859-1";
+
+.container, .bottom-container {
+	display: flex;
+	justify-content: center;	
+}
+
+
+.container .row {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.container .row .col {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+
+input[type="text"], 
+input[type="password"],
+input[type="submit"],
+.btn {
+  width: 500px;
+  padding: 12px;
+  border: 1px solid var(--weightGreen);
+  border-radius: 4px;
+  margin: 5px 0;
+  display: inline-block;
+  line-height: 20px;
+  opacity: 0.85;
+  text-decoration: none; /* remove underline from anchors */
+  color: var(--boldGreen);
+}
+
+input:hover,
+.btn:hover {
+	color: var(--lightGreen);
+}
