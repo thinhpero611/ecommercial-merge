@@ -3,6 +3,7 @@
 .container, .bottom-container {
 	display: flex;
 	justify-content: center;	
+	
 }
 
 

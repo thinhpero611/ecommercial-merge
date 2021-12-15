@@ -1,23 +1,23 @@
-package com.tmt.app;
+package controller;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Logout
+ * Servlet implementation class Controller
  */
-public class Logout extends HttpServlet {
+public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Logout() {
+    public Controller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,20 +27,21 @@ public class Logout extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		   Cookie cookie = null;
-		   Cookie[] cookies = null;
-		   // Get an array of Cookies associated with this domain
-		   cookies = request.getCookies();
-		   if( cookies != null ){
-		      for (int i = 0; i < cookies.length; i++){
-		         cookie = cookies[i];
-		         if((cookie.getName( )).compareTo("username") == 0 ){
-		            cookie.setMaxAge(0);
-		            response.addCookie(cookie);
-		         }
-		      }
-		   }
-		   response.sendRedirect("home.jsp");
+		String action = request.getParameter("action");
+		String page = null;
+		
+		if (action == null) {
+			page = "/error.jsp";
+		} else if (action.equals("login")) {
+			getServletContext().setAttribute("cookie", "false");
+			page = "/login.jsp";
+		} else if (action.equals("about")) {
+			page = "/about.jsp";
+		} else {
+			page = "/error.jsp";
+		}
+		
+		response.sendRedirect(page);
 	}
 
 	/**

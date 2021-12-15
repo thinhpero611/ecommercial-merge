@@ -35,9 +35,6 @@
 			width: 100%;
 	 		object-fit: cover;
 		}
-		.sticky + .phone-bg {
-			padding-top: 60px;
-		}
 	</style>
 </head>
 <body>
