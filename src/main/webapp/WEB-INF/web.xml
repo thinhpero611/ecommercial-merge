@@ -126,4 +126,14 @@
     <servlet-name>Signup</servlet-name>
     <url-pattern>/Signup</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListAllOrders</display-name>
+    <servlet-name>ListAllOrders</servlet-name>
+    <servlet-class>controller.product.ListAllOrders</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListAllOrders</servlet-name>
+    <url-pattern>/ListAllOrders</url-pattern>
+  </servlet-mapping>
 </web-app>

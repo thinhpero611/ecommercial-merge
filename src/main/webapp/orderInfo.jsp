@@ -40,24 +40,26 @@
 	<!-- navigation bar -->
 	<c:import url="navBar.jsp" />
 	
-	<!-- list of cart item and payment -->
-	<c:if test="${cart != null && cart.getSize() != 0 }">
-		<c:import url="listCart.jsp" />
-		<c:import url="payment.jsp" />
+	<!-- orders table -->
+	<c:if test="${orders != null && orders.size() != 0 }">
+		<c:import url="showOrders.jsp" />
 	</c:if>
 	
-	<c:if test="${cart == null || cart.getSize() == 0}">
-	<div style="height: 500px">
-		<h1 class="text-center text-success">
-			Nothing have been stored in here yet <br>
-			Go to <a href="/ListController">Home Page</a> and buy some one please! (^ . ^)
-		</h1>
-	</div>
+	<c:if test="${orders == null && orders.size() == 0}">
+		<div style="height: 500px">
+			<h1 class="text-center text-success">
+				You haven't order any thing yet! <br> Go to <a
+					href="/ListController">Home Page</a> and buy some one please! (^ .
+				^)
+			</h1>
+		</div>
 	</c:if>
 	
 	<c:import url="freeText.jsp" />
 	
 	<!-- footer -->
 	<c:import url="footer.jsp" />
+	
+	
 </body>
 </html>

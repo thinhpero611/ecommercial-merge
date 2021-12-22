@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -109,6 +110,22 @@ public class Orders {
 		this.lp = lp;
 	}
 
+	public void setLp(Cart cart) {
+		List<Product> products = cart.getItems();
+		List<ProductOrders> productOrders = new ArrayList<ProductOrders>();
+		for (Product item : products) {
+			ProductOrders productOrder = new ProductOrders() ;
+			productOrder.setPriceProduct(item.getPrice());
+			productOrder.setOrderId(this.orderId);
+			productOrder.setProductId(item.getId());
+			productOrder.setQuantityProduct(item.getNumber());
+			
+			productOrders.add(productOrder);
+		}
+		this.lp = productOrders;
+		
+	}
+	
 	public Date getReceivedDate() {
 		return receivedDate;
 	}

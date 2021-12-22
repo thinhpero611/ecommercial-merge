@@ -9,7 +9,16 @@ public class Product {
 	private String type;
 	private String brand;
 	private int number;
+	private boolean isChecked = false;
 	
+	public boolean isChecked() {
+		return isChecked;
+	}
+
+	public void setChecked(boolean isChecked) {
+		this.isChecked = isChecked;
+	}
+
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}

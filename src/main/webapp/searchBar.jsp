@@ -25,4 +25,8 @@
 			</div>
 		</form>
 	</div>
+	<div class="ml-auto">
+		<i class="fa fa-cart-arrow-down text-danger"></i>
+		<a href="cart.jsp" class="btn btn-outline-danger">Cart Store</a>
+	</div>
 </div>

@@ -45,4 +45,34 @@ public class Cart {
 	public List<Product> getItems() {
 		return items;
 	}
+	
+	// return the total number of item in cart
+	public int getSize() {
+		return items.size();
+	}
+	
+	// clear all item in cart
+	public void clear() {
+		items.clear();
+	}
+	
+	// check one product is stored in this cart
+	public boolean contain(Product product) {
+		for (Product x : items) {
+			if (product.getId() == x.getId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	// get item in cart with a specified id
+	public Product getItem(int id) {
+		for (Product x : items) {
+			if (x.getId() == id) {
+				return x;
+			}
+		}
+		return null;
+	}
 }

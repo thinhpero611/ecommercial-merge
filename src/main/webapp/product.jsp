@@ -44,10 +44,7 @@
 
 	<!-- set String parameter to add to cart -->
 	<c:set scope="page" var="productParam"
-		value="id=${product.getId()}
-    				&&name=${product.getName()}
-    				&&price=${product.getPrice()}
-    				&&quantity=${product.getNumber()}" />
+		value="id=${product.getId()}&&name=${product.getName()}&&price=${product.getPrice()}&&quantity=${product.getNumber()}" />
 	<!-- information product -->
 	<div class="row">
 		<div class="col-sm-4">
@@ -60,33 +57,20 @@
 			<h2 class="text-center text-danger">
 				<i class="fas fa-dollar-sign"></i>${product.getPrice()}</h2>
 			<div class="d-flex justify-content-center">
-				<a href="<c:url value="/AddToCart?${productParam}" />"
-					class="btn btn-success mx-auto">Add to Cart</a>
+				<c:if test="${cart.contain(product) }">
+					<a href="" class="btn btn-success">Added</a>
+					<i class="fas fa-check text-success"></i>
+				</c:if>
+				<c:if test="${!cart.contain(product)}">
+					<a href="<c:url value="/AddToCart?action=add&&${productParam}" />"
+						class="btn btn-danger mx-auto">Add to Cart</a>
+				</c:if>
 			</div>
 		</div>
 	</div>
-	<div class="row container-fluid mx-3">
-		<div class="col-sm-6">
-			<h2>Free text</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-				ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-				reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-				pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-				culpa qui officia deserunt mollit anim id est laborum.</p>
-		</div>
-		<div class="col-sm-6">
-			<h2>Free Text</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-				ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-				reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-				pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-				culpa qui officia deserunt mollit anim id est laborum.</p>
-		</div>
-	</div>
+
+	<c:import url="freeText.jsp" />
+
 	<!-- footer -->
 	<c:import url="footer.jsp" />
 	</div>

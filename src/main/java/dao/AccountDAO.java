@@ -35,7 +35,7 @@ public class AccountDAO {
 		return acc;
 	}
 	
-	
+	//  authentication user account
 	public boolean login(String email, String password) throws SQLException {
 		String sql = "select count(*) as count from account where user_mail = ? and password =?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -89,5 +89,17 @@ public class AccountDAO {
 		
 		if (count == 0) return false;
 		return true;
+	}
+	
+	//update information user account
+	public void updateInformationByEmail(String userMail, String address, String phoneNumber) throws SQLException {
+		String query = "update account set user_address = ?, user_phone = ? where user_mail = ?";
+		PreparedStatement stmt = conn.prepareStatement(query);
+		stmt.setString(1, address);
+		stmt.setString(2, phoneNumber);
+		stmt.setString(3, userMail);
+		
+		System.out.println(query);
+		stmt.executeUpdate();
 	}
 }

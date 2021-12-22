@@ -4,18 +4,18 @@ public class ProductOrders {
 	private int orderId;
 	private int productId;
 	private int quantityProduct;
-	private String nameProduct;
+	private float priceProduct;
 
 	public ProductOrders() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProductOrders(int orderId, int productId, int quantityProduct, String nameProduct) {
+	public ProductOrders(int orderId, int productId, int quantityProduct, float priceProduct) {
 		super();
 		this.orderId = orderId;
 		this.productId = productId;
 		this.quantityProduct = quantityProduct;
-		this.nameProduct = nameProduct;
+		this.priceProduct = priceProduct;
 	}
 
 	public int getOrderId() {
@@ -42,12 +42,12 @@ public class ProductOrders {
 		this.quantityProduct = quantityProduct;
 	}
 
-	public String getNameProduct() {
-		return nameProduct;
+	public float getPriceProduct() {
+		return priceProduct;
 	}
 
-	public void setNameProduct(String nameProduct) {
-		this.nameProduct = nameProduct;
+	public void setPriceProduct(float priceProduct) {
+		this.priceProduct = priceProduct;
 	}
 
 }

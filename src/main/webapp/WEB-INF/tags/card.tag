@@ -27,7 +27,12 @@
 	<p class="text-center">
 		<i class="fas fa-dollar-sign"></i>${product.getPrice()}</p>
 	<div class="d-flex justify-content-center">
-		<a href="<c:url value="/AddToCart?${productParam}" />"
-			class="btn btn-success mx-auto">Add to Cart</a>
+		<c:if test="${cart.contain(product) }">
+			<a href="" class="btn btn-success">Added</a><i class="fas fa-check text-success"></i>
+		</c:if>
+		<c:if test="${!cart.contain(product)}" >
+		<a href="<c:url value="/AddToCart?action=add&&${productParam}" />"
+			class="btn btn-danger mx-auto">Add to Cart</a>
+		</c:if>
 	</div>
 </div>

@@ -4,7 +4,7 @@
 <div class="row mt-5">
 	<div class=".col-sm-9">
 		<div class="jumbotron">
-			<h1 class="text-center" style="color: var(--primaryGreen);">Just Look At Our Brand New Product Here</h1>
+			<h1 class="text-center" style="color: var(--primaryGreen);">Just Look At Our New Brand Product Here</h1>
 		</div>
 		<c:import url="listProduct.jsp" />
 

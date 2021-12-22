@@ -91,14 +91,14 @@ public class Login extends HttpServlet {
 					response.addCookie(passwd);
 					
 					context.setAttribute("cookie", "true");
-					response.sendRedirect("/admin/index.jsp");
+					request.getRequestDispatcher("/ListController").forward(request, response);
 					conn.close();
 					return;
 				}
 				// use session to send information
 				context.setAttribute("cookie", "false");
 				session.setAttribute("username", userEmail);
-				response.sendRedirect("/admin/index.jsp");
+				request.getRequestDispatcher("/ListController").forward(request, response);
 				conn.close();
 			} else {
 				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");

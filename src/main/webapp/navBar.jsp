@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String uriForward = (String) request.getAttribute("javax.servlet.forward.request_uri");
 
@@ -12,7 +13,7 @@ String uriForward = (String) request.getAttribute("javax.servlet.forward.request
 	// get request URI
 	String uri = new StringBuffer(request.getRequestURI()).toString();
 	response.getWriter().println(uri);
-	if (uri.equals("/home.jsp") || uri.equals("/product.jsp")) {
+	if (!uri.equals("/login.jsp")) {
 	%>
 
 		<!-- switch between login part and logout part -->
@@ -36,20 +37,25 @@ String uriForward = (String) request.getAttribute("javax.servlet.forward.request
 		} else {
 			username = (String)session.getAttribute("username");
 		}
+		%>
 		
-		if (username != null) {
-		%>
-		<a href="/Logout" class="logout">Logout</a> <a href="/accountInfo.jsp" class="user"><i
-			class="far fa-user-circle"><%=username%></i></a>
-		<%
-		} else {
-		%>
-		<a href="/Controller?action=login" class="login"><i
+		<c:if test="${username == null }">
+			<a href="/Controller?action=login" class="login"><i
 			class="fa fa-fw fa-user">Login</i></a>
-		<%
-		}
-		%>
+		</c:if>
 	<%
 	}
 	%>
 </div>
+<c:if test="${username != null }">
+	<div class="dropdown float-left">
+		<button type="button" class="btn btn-muted dropdown-toggle" data-toggle="dropdown">
+			<i class="far fa-user-circle"></i>
+		</button>
+		<div class="dropdown-menu">
+			<a class="dropdown-item" href="/accountInfo.jsp">Email: ${username}</a>
+		  	<a class="dropdown-item" href="/ListAllOrders">Show All My Orders</a>
+		  	<a class="dropdown-item" href="/Logout">Log Out</a>
+		</div>
+	</div>
+</c:if>

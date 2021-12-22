@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,22 +35,33 @@ public class AddToCart extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		try {
 			HttpSession session = request.getSession(true);
+			ServletContext context = getServletContext();
 			int id = Integer.valueOf(request.getParameter("id"));
 			String action = request.getParameter("action");
-			Cart cart = (Cart)session.getAttribute("cart");
+			Cart cart = (Cart)context.getAttribute("cart");
 			if (action != null && action.equalsIgnoreCase("add")) {
 				if (cart == null) {
 					cart = new Cart();
 				}
 				Product product = new ListProductDAO().getProduct("" + id);
+				// set initial quantity is 1
 				product.setNumber(1);
+//				product.setChecked(true);
 				cart.add(product);
-			} else if (action != null && action.equalsIgnoreCase("delete")) {
-				cart.remove(id);
+				context.setAttribute("cart", cart);
+				response.sendRedirect("/ListController");
+			} else if (action != null && action.equalsIgnoreCase("update")) {
+				int quantityOrder = Integer.valueOf(request.getParameter("quantityOrder"));
+				cart.getItem(id).setNumber(quantityOrder);
+				response.sendRedirect("cart.jsp");
 			}
-			response.sendRedirect("cart.jsp");
+			else if (action != null && action.equalsIgnoreCase("delete")) {
+				cart.remove(id);
+				response.sendRedirect("cart.jsp");
+			} 
 		} catch (Exception e) {
 			response.getWriter().println(e);
+			e.printStackTrace();
 		}
 	}
 
