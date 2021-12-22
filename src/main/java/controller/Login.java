@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -12,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Account;
+import bean.Account;
+import context.DBContext;
+import dao.AccountDAO;
 
 /**
  * Servlet implementation class Login
@@ -36,7 +40,12 @@ public class Login extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8"); //vietnamese
 		PrintWriter out = response.getWriter();
+		
 		try {
+			// account work with database
+			Connection conn = new DBContext().getConnection();
+			AccountDAO accDAO = new AccountDAO(conn);
+			
 			request.getSession(true).invalidate();
 			// get session , context
 			HttpSession session = request.getSession();
@@ -44,36 +53,33 @@ public class Login extends HttpServlet {
 			
 			//collect data from a login form
 			String action = request.getParameter("action");
-			String user = request.getParameter("username");
+			String userEmail = request.getParameter("username");
 			String password = request.getParameter("password");
 			String isUseCookie = request.getParameter("remember");
 			
 			
 			Account acc = new Account();
 			
-			acc.setUser(user);
+			acc.setUser(userEmail);
 			acc.setPassword(password);
 			
 			// send  username and pwd to client in order to let user modify it
-			request.setAttribute("username", user);
+			request.setAttribute("username", userEmail);
 			request.setAttribute("password", password);
-			
+						
 			// validate user and password 
 			if (!acc.validate()) {
 				session.setAttribute("error", acc.getMessage());
 				getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);			
 			}
 						
-			//read information of account in web.xml
-			String uid = getServletContext().getInitParameter("username");
-			String pwd = getServletContext().getInitParameter("password");
 			
 			//check account 
-			if (user != null && password.equals(pwd) && user.equalsIgnoreCase(uid)) {
+			if (userEmail != null && accDAO.login(userEmail, password)) {
 				if (isUseCookie != null)
 				if (isUseCookie.equals("true")) {
 					// create cookie
-					Cookie username = new Cookie("username", user);
+					Cookie username = new Cookie("username", userEmail);
 					Cookie passwd = new Cookie("password", password);
 					
 					// set expire time is two hours
@@ -86,12 +92,14 @@ public class Login extends HttpServlet {
 					
 					context.setAttribute("cookie", "true");
 					response.sendRedirect("/admin/index.jsp");
+					conn.close();
 					return;
 				}
 				// use session to send information
 				context.setAttribute("cookie", "false");
-				session.setAttribute("username", user);
+				session.setAttribute("username", userEmail);
 				response.sendRedirect("/admin/index.jsp");
+				conn.close();
 			} else {
 				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 				session.setAttribute("error", "username or password is incorectly");
@@ -100,8 +108,11 @@ public class Login extends HttpServlet {
 		} catch (NullPointerException e) {
 			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 			rd.forward(request, response);
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			response.getWriter().println(e);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

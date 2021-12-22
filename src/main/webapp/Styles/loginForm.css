@@ -31,12 +31,13 @@ input[type="submit"],
   margin: 5px 0;
   display: inline-block;
   line-height: 20px;
+  font-size: 20px;
   opacity: 0.85;
   text-decoration: none; /* remove underline from anchors */
   color: var(--boldGreen);
 }
 
-input:hover,
+/* input:hover, */
 .btn:hover {
 	color: var(--lightGreen);
 }

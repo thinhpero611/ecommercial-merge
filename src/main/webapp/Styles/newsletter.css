@@ -8,7 +8,6 @@
 	color: var(--weightGreen);
 	border: 5px solid var(--lightGreen);
 	border-bottom: none;
-	width: 97vw;
 }
 
 .row1 .content h1 {
@@ -16,7 +15,7 @@
 }
 
 .row1 .sendemail input {
-	width: 500px;
+	width: 60vw;
 	padding: 12px 16px;
 }
 

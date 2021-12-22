@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+
+.search-container form input {
+	border: 2px solid var(--primaryGreen);
+}
+
+.search-container button {
+	color: var(--primaryGreen);
+	border: none;
+	cursor: pointer;
+}
+
+.search-container button i:hover {
+	color: var(--boldGreen);
+}

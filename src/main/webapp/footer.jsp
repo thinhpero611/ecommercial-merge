@@ -1,4 +1,4 @@
-<div class="footer">
+<div class="row footer">
 	<div class="about">
 		<h1>HABI MOM</h1>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

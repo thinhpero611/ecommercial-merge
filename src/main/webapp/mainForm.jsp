@@ -17,8 +17,10 @@ out.println("isUseCookie: "+isUseCookie);
 // get username and password in cookie store in local brower
 String username = null;
 String password = null;
+String lastname = null;
+String firstname = null;
 
-if (isUseCookie.equals("true")) {
+if (isUseCookie != null && isUseCookie.equals("true")) {
 	Cookie cookie = null;
 	Cookie[] cookies = null;
 	// Get an array of Cookies associated with this domain
@@ -39,12 +41,14 @@ if (isUseCookie.equals("true")) {
 } else {
 	username = (String) request.getAttribute("username");
 	password = (String) request.getAttribute("password");
+	firstname = (String) request.getAttribute("firstname");
+	lastname = (String) request.getAttribute("lastname");
 }
 %>
 
 <!--  login form  -->
 <div class="container">
-	<form action="/Login" method="POST">
+	<form action="<%= isSignin ? "/Login" : "/Signup" %>" method="POST">
 		<div class="row">
 			<%
 			if (isSignin) {
@@ -59,7 +63,7 @@ if (isUseCookie.equals("true")) {
 			%>
 			<div class="col">
 				<input type="hidden" name="action" value="signin">
-				<input type="text" name="username" placeholder="Username"
+				<input type="text" name="username" placeholder="Email"
 					value="<%= username != null ? username : "" %>" required autofocus> 
 				<input type="password"
 					id="myInputPw" name="password" placeholder="Password"
@@ -71,8 +75,10 @@ if (isUseCookie.equals("true")) {
 				<%
 				if (!isSignin) {
 				%>
-				<input type="password" name="repeat-password"
-					placeholder="Repeat Password" required>
+				<input type="password" name="repeatPassword"
+					placeholder="Repeat Password"  required>
+				<input type="text" name="firstname" value="<%= firstname != null ? firstname : "" %>" placeholder="Your FirstName" required>
+				<input type="text" name="lastname" value="<%= lastname != null ? lastname : "" %>" placeholder="your LastName" required> 
 				<%
 				}
 				%>
@@ -85,11 +91,6 @@ if (isUseCookie.equals("true")) {
 				%>
 					<input type="submit" value="Log In">
 					<!-- error message go here. -->
-					<%
-					if (error != null) {
-						out.println("<p style=\"color: red;\">" + error + "</p>");
-					}
-					%>
 				<%
 				} else {
 				%>
@@ -97,6 +98,11 @@ if (isUseCookie.equals("true")) {
 				<%
 				}
 				%>
+					<%
+					if (error != null) {
+						out.println("<p style=\"color: red;\">" + error + "</p>");
+					}
+					%>
 			</div>
 			
 			
@@ -104,10 +110,6 @@ if (isUseCookie.equals("true")) {
 				<%
 				if (isSignin) {
 				%>
-				<label>
-						<input type="checkbox" size="50" name="remember" value="true">
-						Remeberme in next time
-				</label>
 				<p>Dont't have an account please <a href="/login.jsp?action=signup">Sign up!</a></p> 
 				
 				<%
@@ -118,6 +120,10 @@ if (isUseCookie.equals("true")) {
 				<%
 				}
 				%>
+				<label>
+						<input type="checkbox" size="50" name="remember" value="true">
+						Remeberme in next time
+				</label>
 			</div>
 		</div>
 	</form>

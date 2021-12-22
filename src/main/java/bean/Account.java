@@ -1,15 +1,15 @@
-package model;
+package bean;
 
 public class Account {
 	private String user, password;
-	private int role;
+	private String role;
 	private String name, address, phone;
 	private int check;
 	private String message;
 
 	public Account() {}
 	
-	public Account(String user, String password, int role, String name, String address, String phone, int check) {
+	public Account(String user, String password, String role, String name, String address, String phone, int check) {
 		super();
 		this.user = user;
 		this.password = password;
@@ -36,11 +36,11 @@ public class Account {
 		this.password = password;
 	}
 
-	public int getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(int role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 

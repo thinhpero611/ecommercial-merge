@@ -4,7 +4,7 @@
 .topnav {
 	overflow: hidden;
 	background-color: var(--primaryGreen);
-	margin: 0 -8px;
+	margin: 0 0;
 	position: relative;
 }
 

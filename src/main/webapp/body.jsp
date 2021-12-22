@@ -1,33 +1,33 @@
-<div class="row">
-	<div class="leftcolumn">
-		<div class="card">
-			<h2>Information of product 1</h2>
-			<h5>Title description, Dec 7, 2021</h5>
-			<div class="img" style="height: 200px;">
-				<img src="image/iphon-classic-grafik.jpg" alt="phone-pic" />
-			</div>
-			<p>Some text ...</p>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!-- this will export to home page -->
+<div class="row mt-5">
+	<div class=".col-sm-9">
+		<div class="jumbotron">
+			<h1 class="text-center" style="color: var(--primaryGreen);">Just Look At Our Brand New Product Here</h1>
 		</div>
-		<div class="card">
-			<h2>Information of product 2</h2>
-			<h5>Title description, Dec 7, 2021</h5>
-			<div class="img" style="height: 200px;">
-				<img src="image/iphon-classic-grafik.jpg" alt="phone-pic" />
-			</div>
-			<p>Some text ...</p>
-		</div>
+		<c:import url="listProduct.jsp" />
+
+		<!-- pagination section -->
+		<ul class="pagination" style="margin-top: 30px;">
+			<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+			<li class="page-item"><a class="page-link"
+				href="/ListController?page=1">1</a></li>
+			<li class="page-item"><a class="page-link"
+				href="/ListController?page=2">2</a></li>
+			<li class="page-item"><a class="page-link"
+				href="/ListController?page=3">3</a></li>
+			<li class="page-item"><a class="page-link" href="#">Next</a></li>
+		</ul>
 	</div>
-	<div class="rightcolumn">
-		<div class="card">
+
+	<div class=".col-sm-3" style="margin-top: 30px;">
+		<div class="mycard">
 			<h2>Shopping card</h2>
-			<div class="img" style="height:100px;">Card</div>
-			<p>Summary information of your cart can be displayed here</p>
+			<div class="img" style="height: 100px;">Card</div>
 		</div>
-		<div class="card">
+		<div class="mycard">
 			<h3>Popular products or banners</h3>
-			<div class="img">Image</div>
-			<div class="img">Image</div>
-			<div class="img">Image</div>
 		</div>
 	</div>
 </div>

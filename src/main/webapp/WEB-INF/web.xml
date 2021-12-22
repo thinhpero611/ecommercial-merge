@@ -7,7 +7,7 @@
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>ListController</welcome-file>
   </welcome-file-list>
   <context-param>
     <param-name>username</param-name>
@@ -47,8 +47,83 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
-  
   <session-config>
-  	<session-timeout>15</session-timeout>
+    <session-timeout>15</session-timeout>
   </session-config>
+  <resource-ref>
+    <description>DB Connection</description>
+    <res-ref-name>jdbc/shoppingdb</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  <servlet>
+    <description></description>
+    <display-name>ListController</display-name>
+    <servlet-name>ListController</servlet-name>
+    <servlet-class>controller.product.ListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListController</servlet-name>
+    <url-pattern>/ListController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchController</display-name>
+    <servlet-name>SearchController</servlet-name>
+    <servlet-class>controller.product.SearchController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchController</servlet-name>
+    <url-pattern>/SearchController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddToCart</display-name>
+    <servlet-name>AddToCart</servlet-name>
+    <servlet-class>controller.AddToCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddToCart</servlet-name>
+    <url-pattern>/AddToCart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InformationProduct</display-name>
+    <servlet-name>InformationProduct</servlet-name>
+    <servlet-class>controller.InformationProduct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InformationProduct</servlet-name>
+    <url-pattern>/InformationProduct</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Payment</display-name>
+    <servlet-name>Payment</servlet-name>
+    <servlet-class>controller.Payment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Payment</servlet-name>
+    <url-pattern>/Payment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchController2</display-name>
+    <servlet-name>SearchController2</servlet-name>
+    <servlet-class>controller.SearchController2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchController2</servlet-name>
+    <url-pattern>/SearchController2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Signup</display-name>
+    <servlet-name>Signup</servlet-name>
+    <servlet-class>controller.Signup</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Signup</servlet-name>
+    <url-pattern>/Signup</url-pattern>
+  </servlet-mapping>
 </web-app>

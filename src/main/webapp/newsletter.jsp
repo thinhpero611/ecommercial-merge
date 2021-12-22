@@ -1,4 +1,4 @@
-<div class="row1">
+<div class="row1 mt-5">
 	<div class="content">
 		<h1>Newsletter</h1>
 		<p>Get timely updates from your favorite products.</p>

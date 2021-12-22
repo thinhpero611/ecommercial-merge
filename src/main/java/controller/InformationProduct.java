@@ -2,22 +2,24 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.ServletContext;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ListProductDAO;
+
 /**
- * Servlet implementation class Controller
+ * Servlet implementation class InformationProduct
  */
-public class Controller extends HttpServlet {
+public class InformationProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Controller() {
+    public InformationProduct() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,24 +29,16 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String action = request.getParameter("action");
-		String page = null;
-		
-		if (action == null) {
-			page = "/home.jsp";
-		} else if (action.equals("login")) {
-			getServletContext().setAttribute("cookie", "false");
-			page = "/login.jsp";
-		} else if (action.equals("about")) {
-			page = "/about.jsp";
-		} else if (action.equals("admin")) { 
-			page = "/admin/index.jsp";
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
+		try {
+			int id = Integer.valueOf(request.getParameter("id"));
+			request.setAttribute("product", new ListProductDAO().getProduct("" + id));
+			RequestDispatcher rd = request.getRequestDispatcher("product.jsp");
+			rd.forward(request, response);
+		} catch (Exception e) {
+			response.getWriter().println(e);
 		}
-		else {
-			page = "/error.jsp";
-		}
-		
-		response.sendRedirect(page);
 	}
 
 	/**
