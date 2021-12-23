@@ -7,12 +7,12 @@
 		<h2 class="text-center text-success">Complete Payment</h2>
 		<form action="<c:url value="/Payment?" />" method="POST">
 			<div class="form-group">
-				<label for="address">Address:</label> <input type="text"
+				<label for="address">Address:</label> <input type="text" value="${ address}"
 					name="address" class="form-control" placeholder="Enter your Adress"
 					id="address">
 			</div>
 			<div class="form-group">
-				<label for="Pnumber">Phone Number: </label> <input type="text"
+				<label for="Pnumber">Phone Number: </label> <input type="text" value="${phoneNumber }"
 					name="phoneNumber" class="form-control"
 					placeholder="Enter your phone number" id="Pnumber">
 			</div>

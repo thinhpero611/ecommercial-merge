@@ -3,9 +3,10 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class Orders {
-	private int orderId;
+	private String orderId;
 	private float price; // total amount of order
 	private int status;
 	private Date orderDate;
@@ -17,10 +18,11 @@ public class Orders {
 	private String discount;
 	
 	public Orders() {
+		this.orderId = UUID.randomUUID().toString();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Orders(int orderId, float price, int status, Date orderDate, String address, String phoneNumber,
+	public Orders(String orderId, float price, int status, Date orderDate, String address, String phoneNumber,
 			String userEmail, List<ProductOrders> lp, Date receivedDate, String discount) {
 		super();
 		this.orderId = orderId;
@@ -38,6 +40,7 @@ public class Orders {
 	public Orders(String userEmail, int status, String discount, String address, String phoneNumber,
 			Date receivedDate) {
 		super();
+		this.orderId = UUID.randomUUID().toString();
 		this.userEmail = userEmail;
 		this.status = status;
 		this.discount = discount;
@@ -46,11 +49,11 @@ public class Orders {
 		this.receivedDate = receivedDate;
 	}
 
-	public int getOrderId() {
+	public String getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(int orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 

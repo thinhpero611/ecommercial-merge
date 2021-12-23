@@ -38,6 +38,7 @@ public class ListController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		int total = 8;
 		String page = request.getParameter("page");
+		request.setAttribute("page", page);
 		// default product will load first product with id 1
 		int start = 1;
 		if (page != null && !page.equals("1")) { 

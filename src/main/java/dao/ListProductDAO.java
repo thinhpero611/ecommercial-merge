@@ -11,7 +11,13 @@ import context.DBContext;
 import model.Product;
 
 public class ListProductDAO {
+	private Connection conn;
 	
+	public ListProductDAO() {}
+	
+	public ListProductDAO(Connection conn) {
+		this.conn = conn;
+	}
 	// fetch all electronic product store in data base
 	public List<Product> search(String characters, int start, int total) throws SQLException, ClassNotFoundException {
 		List<Product> ls = new ArrayList<Product>();
@@ -48,6 +54,27 @@ public class ListProductDAO {
 		Connection conn = new DBContext().getConnection();
 		String query = "select * from products where product_id = ?";
 		PreparedStatement stmt = conn.prepareStatement(query);
+		
+		stmt.setString(1, chracters);
+		ResultSet rs = stmt.executeQuery();
+		
+		Product product = new Product();
+		while (rs.next()) {
+			product.setId(rs.getInt(1));
+			product.setName(rs.getString(2));
+			product.setDescription(rs.getString(3));
+			product.setPrice(rs.getFloat(4));
+			product.setSrc(rs.getString(5));
+			product.setType(rs.getString(6));
+			product.setBrand(rs.getString(7));
+		}
+		return product;
+	}
+	
+	public Product getProductWithConnection(String chracters) throws SQLException, ClassNotFoundException {
+		// get connection 
+		String query = "select * from products where product_id = ?";
+		PreparedStatement stmt = this.conn.prepareStatement(query);
 		
 		stmt.setString(1, chracters);
 		ResultSet rs = stmt.executeQuery();

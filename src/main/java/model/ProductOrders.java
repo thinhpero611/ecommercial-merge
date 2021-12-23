@@ -1,7 +1,7 @@
 package model;
 
 public class ProductOrders {
-	private int orderId;
+	private String orderId;
 	private int productId;
 	private int quantityProduct;
 	private float priceProduct;
@@ -10,7 +10,7 @@ public class ProductOrders {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProductOrders(int orderId, int productId, int quantityProduct, float priceProduct) {
+	public ProductOrders(String orderId, int productId, int quantityProduct, float priceProduct) {
 		super();
 		this.orderId = orderId;
 		this.productId = productId;
@@ -18,12 +18,12 @@ public class ProductOrders {
 		this.priceProduct = priceProduct;
 	}
 
-	public int getOrderId() {
+	public String getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
+	public void setOrderId(String orderId2) {
+		this.orderId = orderId2;
 	}
 
 	public int getProductId() {

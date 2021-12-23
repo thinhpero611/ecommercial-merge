@@ -39,7 +39,7 @@ public class Logout extends HttpServlet {
 	      }
 		  request.getSession().removeAttribute("username");
 		  getServletContext().setAttribute("cookie", "false");
-		  response.sendRedirect("home.jsp");
+		  response.sendRedirect("/ListController");
 	}
 
 	/**

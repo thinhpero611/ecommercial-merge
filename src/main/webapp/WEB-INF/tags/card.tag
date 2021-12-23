@@ -11,7 +11,7 @@
 
 <!-- set String parameter to add to cart -->
 <c:set scope="page" var="productParam"
-	value="id=${product.getId()}
+	value="id=${product.getId()}&&page=${page}
 	&&name=${product.getName()}
 	&&price=${product.getPrice()}
 	&&quantity=${product.getNumber()}" />

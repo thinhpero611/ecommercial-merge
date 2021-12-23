@@ -45,6 +45,9 @@ public class SearchController extends HttpServlet {
 		}
 		try {
 			String name = request.getParameter("search");
+		
+			request.setAttribute("isSearch", "ok");
+			request.setAttribute("keyword", name);
 			List<Product> ls = new ListProductDAO().search(name, start, total);
 			request.setAttribute("products", ls);
 			RequestDispatcher rd = request.getRequestDispatcher("/home.jsp");

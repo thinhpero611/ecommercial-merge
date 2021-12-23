@@ -48,6 +48,10 @@ public class Payment extends HttpServlet {
 			String address = request.getParameter("address");
 			String phoneNumber = request.getParameter("phoneNumber");
 			response.getWriter().println(address + phoneNumber);
+			
+			session.setAttribute("address", address);
+			session.setAttribute("phoneNumber", phoneNumber);
+			
 			//update information of user
 			AccountDAO accountDao = new AccountDAO(new DBContext().getConnection());
 			accountDao.updateInformationByEmail(userMail, address, phoneNumber);
@@ -55,7 +59,7 @@ public class Payment extends HttpServlet {
 			Orders orders = new Orders(userMail, 2, discount, address, phoneNumber, null);
 			// create date for this order
 			long millis=System.currentTimeMillis();  
-			java.sql.Date date=new java.sql.Date(millis);  
+			java.sql.Date date = new java.sql.Date(millis);  
 			orders.setOrderDate(date);
 			
 			// set list Product Orders
@@ -68,7 +72,7 @@ public class Payment extends HttpServlet {
 			// save this order into database
 			OrdersDAO orderDao = new OrdersDAO();
 			orderDao.insertOrder(orders, cart);
-//			orderDao.insertOrderDetail(orders);
+			orderDao.insertOrderDetail(orders);
 			
 			cart.clear();
 			response.sendRedirect("/ListController");

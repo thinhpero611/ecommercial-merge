@@ -36,9 +36,13 @@ public class AddToCart extends HttpServlet {
 		try {
 			HttpSession session = request.getSession(true);
 			ServletContext context = getServletContext();
+			
 			int id = Integer.valueOf(request.getParameter("id"));
+			
 			String action = request.getParameter("action");
+			String page = request.getParameter("page");
 			Cart cart = (Cart)context.getAttribute("cart");
+			
 			if (action != null && action.equalsIgnoreCase("add")) {
 				if (cart == null) {
 					cart = new Cart();
@@ -46,10 +50,10 @@ public class AddToCart extends HttpServlet {
 				Product product = new ListProductDAO().getProduct("" + id);
 				// set initial quantity is 1
 				product.setNumber(1);
-//				product.setChecked(true);
 				cart.add(product);
 				context.setAttribute("cart", cart);
-				response.sendRedirect("/ListController");
+				
+				response.sendRedirect("/ListController?page=" + ((page == null || page == "") ? 1 : page));
 			} else if (action != null && action.equalsIgnoreCase("update")) {
 				int quantityOrder = Integer.valueOf(request.getParameter("quantityOrder"));
 				cart.getItem(id).setNumber(quantityOrder);
