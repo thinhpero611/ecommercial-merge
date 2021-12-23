@@ -36,7 +36,7 @@ public class SearchController extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		int total = 8;
+		int total = 9;
 		String page = request.getParameter("page");
 		// default product will load first product with id 1
 		int start = 1;

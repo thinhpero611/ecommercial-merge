@@ -4,20 +4,22 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my"%>
 
 <c:if test="${!products.isEmpty()}">
-<c:set var="gridWidth" value="4" />
-	<table>
+<c:set var="gridWidth" value="3" />
+<!-- 	<table> -->
 		<c:forEach var="product" items="${products}" varStatus="row">
 			<c:if test="${row.index % gridWidth == 0 }">
-				<tr>
+<!-- 				<tr> -->
+			<div class="col-sm-4">
 			</c:if>
 			
 			<td><my:card product="${product}" /></td>
 			
 			<c:if test="${(row.index + 1) % gridWidth == 0 }">
-				</tr>
+<!-- 				</tr> -->
+			</div>
 			</c:if>
 		</c:forEach>
-	</table>
+<!-- 	</table> -->
 </c:if>
 
 <!-- if not found any product show this part -->

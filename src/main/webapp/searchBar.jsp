@@ -1,4 +1,4 @@
-<div class="d-flex flex-row search-container">
+<div class="d-md-flex flex-md-row search-container">
 	<div class="dropdown">
 		<button type="button"
 			class="btn btn-white dropdown-toggle text-success"
