@@ -10,6 +10,9 @@
 <!-- external link -->
 <jsp:include page="externalLink.jsp" />
 
+<!-- login Form style -->
+<link rel="stylesheet" href="/Styles/loginForm.css" />
+
 </head>
 <body>
 	<!--  navigation Bar with login -->

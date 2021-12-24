@@ -7,16 +7,18 @@ if (isSearch == null) isSearch = "notOk";
 else keyword =(String) request.getAttribute("keyword");
 %>
 <!-- this will export to home page -->
-<div class="">
-	<div class="row mt-5">
+<div class="row">
+	<div class="col-12 mt-5">
 		<div class="jumbotron">
 			<h1 class="text-center" style="color: var(--primaryGreen);">Just Look At Our New Brand Product Here</h1>
 		</div>
 	</div>
 	
 	<!-- list of product -->
-	<div class="row">
-		<c:import url="listProduct.jsp" />
+	<div class="col-12">
+		<div class="row">
+			<c:import url="listProduct.jsp" />
+		</div>
 	</div>
 		
 
@@ -33,7 +35,7 @@ else keyword =(String) request.getAttribute("keyword");
 	</ul>
 	
 	<!-- popular cart -->
-	<div class="row" style="margin-top: 30px;" style="width:500px;">
+	<div class="col-12" style="margin-top: 30px;" style="width:500px;">
 		<div class="mycard">
 			<h3>Popular products</h3>
 		</div>
