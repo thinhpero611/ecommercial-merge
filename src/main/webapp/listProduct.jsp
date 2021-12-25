@@ -26,7 +26,7 @@
 <c:if test="${products.isEmpty()}">
 	<div style="height: 300px">
 		<h2 class="text-center text-danger">
-			Sorry We Can't Any product in store! Please try an other <strong>key
+			Sorry We Can't Find Any product in store! Please try an other <strong>key
 				word</strong>
 		</h2>
 	</div>

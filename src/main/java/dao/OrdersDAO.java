@@ -27,6 +27,7 @@ public class OrdersDAO {
 					 +  "values (?, ?, ?, ?, ?, ?);";
 		PreparedStatement stmt = conn.prepareStatement(query1);
 		System.out.println(order.getOrderId());
+		
 		stmt.setString(1, order.getOrderId().substring(0, 8));
 		stmt.setString(2, order.getUserEmail());
 		stmt.setInt(3, order.getStatus());

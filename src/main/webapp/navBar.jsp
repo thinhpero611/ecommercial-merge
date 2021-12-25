@@ -47,15 +47,3 @@ String uriForward = (String) request.getAttribute("javax.servlet.forward.request
 	}
 	%>
 </div>
-<c:if test="${username != null }">
-	<div class="dropdown float-left">
-		<button type="button" class="btn btn-muted dropdown-toggle" data-toggle="dropdown">
-			<i class="far fa-user-circle"></i>
-		</button>
-		<div class="dropdown-menu">
-			<a class="dropdown-item" href="/accountInfo.jsp">Email: ${username}</a>
-		  	<a class="dropdown-item" href="/ListAllOrders">Show All My Orders</a>
-		  	<a class="dropdown-item" href="/Logout">Log Out</a>
-		</div>
-	</div>
-</c:if>

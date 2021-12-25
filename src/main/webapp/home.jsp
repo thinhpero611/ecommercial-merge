@@ -8,6 +8,12 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 	<!-- external link -->
 	<jsp:include page="externalLink.jsp" />
+	
+	<style>
+	.dropdown-menu.show {
+		transform: translate3d(-189px, 41px, 0px);
+	}
+	</style>
 </head>
 <body>
 	<!-- header section -->

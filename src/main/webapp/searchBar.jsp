@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="d-md-flex flex-md-row search-container mt-5">
 	<div class="dropdown">
 		<button type="button"
@@ -29,4 +30,16 @@
 		<i class="fa fa-cart-arrow-down text-danger"></i>
 		Cart Store<span class="badge badge-warning">${cart.getSize()}</span></a>
 	</div>
+	<c:if test="${username != null }">
+	<div class="dropdown">
+		<button type="button" class="btn btn-muted dropdown-toggle" data-toggle="dropdown">
+			<i class="far fa-user-circle"></i>
+		</button>
+		<div class="dropdown-menu" style="transform: translate3d(-189px, 41px, 0px);">
+			<a class="dropdown-item" href="/accountInfo.jsp">Email: ${username}</a>
+		  	<a class="dropdown-item" href="/ListAllOrders">Show All My Orders</a>
+		  	<a class="dropdown-item" href="/Logout">Log Out</a>
+		</div>
+	</div>
+</c:if>
 </div>
