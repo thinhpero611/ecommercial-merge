@@ -19,12 +19,17 @@ public class AdminDAO {
 	public List<UserGeneric> getStatisticUser() throws SQLException, Exception {
 		Connection conn = new DBContext().getConnection();
 		List<UserGeneric> listUserG = new ArrayList<UserGeneric>();
-		String query = "select A.user_mail, A.user_name, A.user_age, A.user_address, "
-				+ "count(O.order_id) as NumberOrder, "
-				+ "sum(D.price_product * D.order_quantity) as totalPayment "
-				+ "from account as A join orders as O on A.user_mail = O.user_mail join orders_detail as D on O.order_id = D.order_id "
-				+ "group by user_mail "
-				+ "order by totalPayment desc;";
+		String query = "select derived.user_mail, A.user_name, A.user_age, A.user_address, "
+						+ "count(derived.order_id) as NumberOrder, "
+						+ "sum(derived.total) as totalPayment "
+						+ "from( "
+								+ "select user_mail, O.order_id , sum(D.price_product * D.order_quantity) as total "
+								+ "from orders as O join orders_detail as D on O.order_id = D.order_id "
+								+ "group by D.order_id "
+							+ ") as derived "
+						+ "join account as A on derived.user_mail = A.user_mail "
+						+ "group by user_mail "
+						+ "order by totalPayment desc;";
 //		System.out.println(query);
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery(query);
@@ -45,5 +50,17 @@ public class AdminDAO {
 		}
 		return listUserG; 
 		
+	}
+	
+	public float getTotalProductSale() throws SQLException, ClassNotFoundException {
+		Connection conn = new DBContext().getConnection();
+		String query = "select sum(order_quantity) from orders_detail;";
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		
+		if (rs.next()) {
+			return rs.getFloat(1);
+		}
+		return 0;
 	}
 }

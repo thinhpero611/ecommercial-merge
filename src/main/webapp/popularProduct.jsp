@@ -3,7 +3,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my"%>
 
 <div class="d-md-flex flex-md-row">
-	<c:forEach var="product" items="${popularProduct}" end="3"
+	<c:forEach var="product" items="${popularProduct}"
 		varStatus="row">
 		<div class="mycard">
 			<div class="img">

@@ -3,8 +3,10 @@
 
 <%@ page import="model.*" %>
 <c:set var="total" value="${0}"/>
+<c:set var="totalOrder" value="${0 }"/>
 <c:forEach var="user" items="${listUserG}">
     <c:set var="total" value="${total + user.getTotalPayment()}" />
+    <c:set var="totalOrder" value="${totalOrder  + user.getNumberOfOrder() }"/>
 </c:forEach>
 <div class="row">
    	<div class="col-sm-3">
@@ -15,14 +17,14 @@
    	</div>
    	<div class="col-sm-3">
   		<div class="well well-lg">
-     		<h4 class="text-success">Pages</h4>
-     		<p class="bg-info">99 Million</p> 
+     		<h4 class="text-success">Orders</h4>
+     		<p class="bg-info">${totalOrder}</p> 
    		</div>
    	</div>
    	<div class="col-sm-3">
    		<div class="well well-lg">
-     		<h4 class="text-info">Sessions</h4>
-     		<p class="bg-success">9.9 Million</p> 
+     		<h4 class="text-info">Products</h4>
+     		<p class="bg-success">${totalProductSale}</p> 
    		</div>
    	</div>
    	<div class="col-sm-3">

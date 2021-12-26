@@ -48,6 +48,7 @@ public class Admin extends HttpServlet {
 				return;
 			} else if (role.equals("admin")) {
 				request.setAttribute("listUserG", new AdminDAO().getStatisticUser());
+				request.setAttribute("totalProductSale", new AdminDAO().getTotalProductSale());
 				request.getRequestDispatcher("admin/index.jsp").forward(request, response);
 			}
 			
