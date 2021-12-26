@@ -20,7 +20,6 @@ else keyword =(String) request.getAttribute("keyword");
 			<c:import url="listProduct.jsp" />
 		</div>
 	</div>
-		
 
 	<!-- pagination section -->
 	<ul class="pagination" style="margin-top: 30px;" > 

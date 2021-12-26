@@ -63,7 +63,9 @@
     	<jsp:include page="sidenav.jsp" />
     	
     	<%@ include file="switchLoginAndLogoutLogic.jsp" %>
-      	<% if (username != null) { %>
+      	<% 
+      	String user = (String) session.getAttribute("username");
+      	if (user != null) { %>
     	<div class="col-sm-9" style="background: #0072B5;">
     	
       		<div class="row">
@@ -76,7 +78,7 @@
       			<div class="col-sm-4 well bg-info">
       				<ul class="nav nav-pills">
       					<li><a href="/ListController"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-      					<Li><a class=""><i class="far fa-user-circle"><%= username %></i></a></Li>
+      					<Li><a class=""><i class="far fa-user-circle"><%= user %></i></a></Li>
       					<li><a href="/Logout" class="logout">Logout</a></li>
       				</ul>
       			</div>

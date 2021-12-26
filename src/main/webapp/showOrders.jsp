@@ -20,7 +20,12 @@
 		<td>${order.getPrice() }</td>	
 		<td>
 			<c:forEach var="productOrder" items="${order.getLp()}">
-				<p>${ListProductDAO().getProduct(""+productOrder.getProductId()).getName()}</p><Strong class="text-info"></Strong>
+				<p><Strong class="text-info">${productOrder.getQuantityProduct()}</Strong>
+				${ListProductDAO().getProduct(""+productOrder.getProductId()).getName()}
+				<Strong class="text-danger">
+					<fmt:setLocale value="en_US" />
+					<fmt:formatNumber value="${productOrder.getPriceProduct()}" type="currency" />
+				</Strong></p>
 			</c:forEach>
 		</td>
 	</tr>

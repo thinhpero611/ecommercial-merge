@@ -36,9 +36,10 @@
 			<i class="far fa-user-circle"></i>
 		</button>
 		<div class="dropdown-menu" style="transform: translate3d(-189px, 41px, 0px);">
-			<a class="dropdown-item" href="/accountInfo.jsp">Email: ${username}</a>
-		  	<a class="dropdown-item" href="/ListAllOrders">Show All My Orders</a>
-		  	<a class="dropdown-item" href="/Logout">Log Out</a>
+			<a class="dropdown-item" href="/accountInfo.jsp"><i class="fas fa-user"></i>Email: ${username}</a>
+		  	<a class="dropdown-item" href="/ListAllOrders"><i class="fas fa-list"></i>Show All My Orders</a>
+		  	<a class="dropdown-item" href="/Admin"><i class="fas fa-user-shield"></i>Admin</a>
+		  	<a class="dropdown-item" href="/Logout"><i class="fas fa-sign-out-alt"></i>Log Out</a>
 		</div>
 	</div>
 </c:if>

@@ -60,12 +60,13 @@ public class OrdersDAO {
 		Connection conn = new DBContext().getConnection();
 		List<Orders> listOrders = new ArrayList<Orders>();
 		String query = "select O.order_id, O.order_status, O.order_date, O.order_discount_code, O.order_address, "
-					  + "sum(D.price_product) "
+					  + "sum(D.price_product * D.order_quantity) "
 				      + "from orders as O join orders_detail as D on O.order_id = D.order_id "
 				      + "where user_mail = ?"
 				      + "group by order_id;";
 		PreparedStatement stmt = conn.prepareStatement(query);
 		stmt.setString(1, mail);
+//		System.out.println(query);
 		ResultSet rs = stmt.executeQuery();
 		
 		while (rs.next()) {
