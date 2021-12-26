@@ -1,48 +1,38 @@
 <!-- initial setting -->
 <%
-
 // initial loading is sign in 
 boolean isSignin = true;
 String action = request.getParameter("action");
 
-// use this to switch between sign in and sign up
-if (action != null)
-	isSignin = action.equals("signin"); 
-
-// get error state in session
-String error = (String)session.getAttribute("error");
-String isUseCookie = (String) getServletContext().getAttribute("cookie");
-out.println("isUseCookie: "+isUseCookie);
-
-// get username and password in cookie store in local brower
 String username = null;
 String password = null;
-String lastname = null;
-String firstname = null;
+String firstname = (String) request.getAttribute("firstname");
+String lastname = (String) request.getAttribute("lastname");
+String error = (String)session.getAttribute("error");
 
-if (isUseCookie != null && isUseCookie.equals("true")) {
-	Cookie cookie = null;
-	Cookie[] cookies = null;
-	// Get an array of Cookies associated with this domain
-	cookies = request.getCookies();
-	if (cookies != null) {
-		for (int i = 0; i < cookies.length; i++) {
-			cookie = cookies[i];
-			if (cookie.getName().equals("username")) {
-				username = cookie.getValue();
-			}
-			if (cookie.getName().equals("password")) {
-				password = cookie.getValue();
-			}
+// use this to switch between sign in and sign up
+if (action != null && action.equals("signup")) {
+	isSignin = false;
+	username = (String) request.getAttribute("username");
+	password = (String) request.getAttribute("password");
+	error = (String)session.getAttribute("error");
+	
+} else {
+// get username and password in cookie store in local brower to login
+Cookie[] cookies = request.getCookies();
+if (cookies != null) {
+	for (Cookie retrievedCookie : cookies) {
+		if (retrievedCookie.getName().equals("username")) {
+			username = retrievedCookie.getValue();
 		}
-	} else {		
-	 	response.getWriter().println("<h2> Cookie was not set.</h2>");
-	}
+		if (retrievedCookie.getName().equals("password")) {
+			password = retrievedCookie.getValue();
+		}
+	} 
 } else {
 	username = (String) request.getAttribute("username");
 	password = (String) request.getAttribute("password");
-	firstname = (String) request.getAttribute("firstname");
-	lastname = (String) request.getAttribute("lastname");
+}
 }
 %>
 

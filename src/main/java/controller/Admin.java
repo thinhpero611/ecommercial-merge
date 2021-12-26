@@ -38,7 +38,7 @@ public class Admin extends HttpServlet {
 		try {
 			HttpSession session = request.getSession();
 			String username = (String) session.getAttribute("username");
-			Account acc = new AccountDAO(new DBContext().getConnection()).getAccountInfo(username);
+			Account acc = new AccountDAO(new DBContext().getConnection()).getAccountInfoByEmail(username);
 			// get role of this user
 			String role = acc.getRole();
 			// check user's role

@@ -3,18 +3,20 @@ package bean;
 public class Account {
 	private String user, password;
 	private String role;
+	private int age;
 	private String name, address, phone;
 	private int check;
 	private String message;
 
 	public Account() {}
 	
-	public Account(String user, String password, String role, String name, String address, String phone, int check) {
+	public Account(String user, String password, String role, String name, int age, String address, String phone, int check) {
 		super();
 		this.user = user;
 		this.password = password;
 		this.role = role;
 		this.name = name;
+		this.age = age;
 		this.address = address;
 		this.phone = phone;
 		this.check = check;
@@ -50,6 +52,14 @@ public class Account {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 	public String getAddress() {
@@ -106,6 +116,11 @@ public class Account {
 		
 		else if (!password.matches(regex)) {
 			message = "in valid password";
+			return false;
+		}
+		
+		else if (this.address != null && this.address.split(",").length < 3) {
+			message = "address must have street, city and coutry";
 			return false;
 		}
 		

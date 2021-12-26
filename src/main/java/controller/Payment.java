@@ -58,7 +58,7 @@ public class Payment extends HttpServlet {
 			
 			Orders orders = new Orders(userMail, 2, discount, address, phoneNumber, null);
 			// create date for this order
-			long millis=System.currentTimeMillis();  
+			long millis=System.currentTimeMillis();
 			java.sql.Date date = new java.sql.Date(millis);  
 			orders.setOrderDate(date);
 			
@@ -75,7 +75,7 @@ public class Payment extends HttpServlet {
 			orderDao.insertOrderDetail(orders);
 			
 			cart.clear();
-			response.sendRedirect("/ListController");
+			response.sendRedirect("/home");
 			
 		} catch (Exception e) {
 			response.getWriter().println(e);

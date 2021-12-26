@@ -3,6 +3,7 @@ package controller.product;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,8 +34,7 @@ public class ListAllOrders extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		try {
 			HttpSession session = request.getSession(true);
-			String userMail = (String) session.getAttribute("username");
-			
+			String userMail = (String)session.getAttribute("username");
 			request.setAttribute("orders", new OrdersDAO().getOrdersByEmail(userMail));
 			
 			request.getRequestDispatcher("/orderInfo.jsp").forward(request, response);

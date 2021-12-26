@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home</title>
+<title>Ecommercial</title>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 	<!-- external link -->
 	<jsp:include page="externalLink.jsp" />
@@ -24,13 +24,9 @@
 
 	<!--  Search Bar -->
 	<jsp:include page="searchBar.jsp" />
-	
 
 	<!-- the body where all product will be show here -->
 	<jsp:include page="body.jsp" />
-
-	<!-- slide show image -->
-	<jsp:include page="slideShow.jsp" />
 	
 	<jsp:include page="newsletter.jsp" />
 

@@ -1,3 +1,6 @@
+<!-- favicon -->
+<link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+
 <!-- Add icon library -->
 <script src='https://kit.fontawesome.com/a076d05399.js'
 	crossorigin='anonymous'></script>

@@ -61,11 +61,11 @@ public class Signup extends HttpServlet {
 		// get session , context
 		HttpSession session = request.getSession();
 		ServletContext context = getServletContext();
+		context.setAttribute("cookie", "false");
 		try {
 			// account work with database
 			Connection conn = new DBContext().getConnection();
 			AccountDAO accDAO = new AccountDAO(conn);
-			
 			
 			//collect data from a sign up form
 			//String action = request.getParameter("action");
@@ -117,33 +117,28 @@ public class Signup extends HttpServlet {
 					Cookie usernameC = new Cookie("username", userEmail);
 					Cookie passwd = new Cookie("password", password);
 					
-					// set expire time is two hours
-					usernameC.setMaxAge(60*60*2);
-					passwd.setMaxAge(60*60*2);
+					// set expire time is three day
+					usernameC.setMaxAge(60*60*24*3);
+					passwd.setMaxAge(60*60*24*3);
 					
 					// add it to response header and browser can receive it
 					response.addCookie(usernameC);
 					response.addCookie(passwd);
 					
 					context.setAttribute("cookie", "true");
-					response.sendRedirect("/admin/index.jsp");
-					conn.close();
-					return;
 				}
-				
 				// use session to send information
-				context.setAttribute("cookie", "false");
 				session.setAttribute("username", userEmail);
-				response.sendRedirect("/admin/index.jsp");
+				response.sendRedirect("/home");
 				conn.close();
 			} 
 		} catch (NullPointerException e) {
-			session.setAttribute("error", "some thing went wrong!");
+			request.setAttribute("error", "some thing went wrong!");
 			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp?action=signup");
 			rd.forward(request, response);
 			e.printStackTrace();
 		} catch (SQLException e) {
-			session.setAttribute("error", "some thing went wrong!");
+			request.setAttribute("error", "some thing went wrong!");
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp?action=signup");
 			rd.include(request, response);
 			e.printStackTrace();

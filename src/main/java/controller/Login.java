@@ -50,13 +50,12 @@ public class Login extends HttpServlet {
 			// get session , context
 			HttpSession session = request.getSession();
 			ServletContext context = getServletContext();
-			
+			context.setAttribute("cookie", "false");
 			//collect data from a login form
 			String action = request.getParameter("action");
 			String userEmail = request.getParameter("username");
 			String password = request.getParameter("password");
 			String isUseCookie = request.getParameter("remember");
-			
 			
 			Account acc = new Account();
 			
@@ -73,7 +72,6 @@ public class Login extends HttpServlet {
 				getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);			
 			}
 						
-			
 			//check account 
 			if (userEmail != null && accDAO.login(userEmail, password)) {
 				if (isUseCookie != null)
@@ -82,23 +80,20 @@ public class Login extends HttpServlet {
 					Cookie username = new Cookie("username", userEmail);
 					Cookie passwd = new Cookie("password", password);
 					
-					// set expire time is two hours
-					username.setMaxAge(60*60*2);
-					passwd.setMaxAge(60*60*2);
+					// set expire time is three day
+					username.setMaxAge(60*60*24*3);
+					passwd.setMaxAge(60*60*24*3);
 					
 					// add it to response header and browser can receive it
 					response.addCookie(username);
 					response.addCookie(passwd);
 					
 					context.setAttribute("cookie", "true");
-					request.getRequestDispatcher("/ListController").forward(request, response);
-					conn.close();
-					return;
 				}
 				// use session to send information
-				context.setAttribute("cookie", "false");
 				session.setAttribute("username", userEmail);
-				request.getRequestDispatcher("/ListController").forward(request, response);
+		
+				response.sendRedirect("/home");
 				conn.close();
 			} else {
 				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
@@ -123,7 +118,7 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		String action = request.getParameter("action");
 		if (action == null) {
-			getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);			
+			getServletContext().getRequestDispatcher("/home").forward(request, response);			
 		} else if (action.equals("login")) {
 			request.setAttribute("username", "");
 			request.setAttribute("password", "");

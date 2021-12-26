@@ -77,7 +77,7 @@
       			
       			<div class="col-sm-4 well bg-info">
       				<ul class="nav nav-pills">
-      					<li><a href="/ListController"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+      					<li><a href="/home"><span class="glyphicon glyphicon-home"></span>Home</a></li>
       					<Li><a class=""><i class="far fa-user-circle"><%= user %></i></a></Li>
       					<li><a href="/Logout" class="logout">Logout</a></li>
       				</ul>
@@ -101,7 +101,7 @@
   		
   		<!-- redirect to home page -->
   		<div class="text-center">
-    		<h2><a href="/ListController">this</a> will send you to home page. Thanks!</h2>
+    		<h2><a href="/home">this</a> will send you to home page. Thanks!</h2>
   		</div>
 		<% } %>	
 	</div>

@@ -7,7 +7,7 @@
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
-    <welcome-file>ListController</welcome-file>
+    <welcome-file>home</welcome-file>
   </welcome-file-list>
   <context-param>
     <param-name>username</param-name>
@@ -64,7 +64,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ListController</servlet-name>
-    <url-pattern>/ListController</url-pattern>
+    <url-pattern>/home</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -145,5 +145,25 @@
   <servlet-mapping>
     <servlet-name>Admin</servlet-name>
     <url-pattern>/Admin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AccountController</display-name>
+    <servlet-name>AccountController</servlet-name>
+    <servlet-class>controller.AccountController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccountController</servlet-name>
+    <url-pattern>/AccountController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListTopProduct</display-name>
+    <servlet-name>ListTopProduct</servlet-name>
+    <servlet-class>controller.product.ListTopProduct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListTopProduct</servlet-name>
+    <url-pattern>/ListTopProduct</url-pattern>
   </servlet-mapping>
 </web-app>

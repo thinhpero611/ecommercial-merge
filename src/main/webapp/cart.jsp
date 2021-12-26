@@ -23,7 +23,7 @@
 	<div style="height: 500px">
 		<h1 class="text-center text-success">
 			Nothing have been stored in here yet <br>
-			Go to <a href="/ListController">Home Page</a> and buy some one please! (^ . ^)
+			Go to <a href="/home">Home Page</a> and buy some one please! (^ . ^)
 		</h1>
 	</div>
 	</c:if>

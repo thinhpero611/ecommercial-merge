@@ -53,7 +53,7 @@ public class AddToCart extends HttpServlet {
 				cart.add(product);
 				context.setAttribute("cart", cart);
 				
-				response.sendRedirect("/ListController?page=" + ((page == null || page == "") ? 1 : page));
+				response.sendRedirect("/home?page=" + ((page == null || page == "") ? 1 : page));
 			} else if (action != null && action.equalsIgnoreCase("update")) {
 				int quantityOrder = Integer.valueOf(request.getParameter("quantityOrder"));
 				cart.getItem(id).setNumber(quantityOrder);

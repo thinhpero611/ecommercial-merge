@@ -49,6 +49,34 @@ public class ListProductDAO {
 		
 	}
 	
+	public List<Product> getPopularProduct() throws SQLException, ClassNotFoundException {
+List<Product> ls = new ArrayList<Product>();
+		
+		// get connection 
+		Connection conn = new DBContext().getConnection();
+		String query = "select P.* from orders_detail as O join products as P "
+				+ "on O.product_id = P.product_id "
+				+ "group by O.product_id order by sum(O.order_quantity) desc limit 5;";
+		
+		PreparedStatement stmt = conn.prepareStatement(query);
+		ResultSet rs = stmt.executeQuery();
+		
+		while (rs.next()) {
+			Product newProduct = new Product();
+			newProduct.setId(rs.getInt(1));
+			newProduct.setName(rs.getString(2));
+			newProduct.setDescription(rs.getString(3));
+			newProduct.setPrice(rs.getFloat(4));
+			newProduct.setSrc(rs.getString(5));
+			newProduct.setType(rs.getString(6));
+			newProduct.setBrand(rs.getString(7));
+			
+			//add to array list
+			ls.add(newProduct);
+		}
+		return ls;
+	}
+	
 	public Product getProduct(String chracters) throws SQLException, ClassNotFoundException {
 		// get connection 
 		Connection conn = new DBContext().getConnection();

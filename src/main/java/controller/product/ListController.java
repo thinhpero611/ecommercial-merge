@@ -49,7 +49,9 @@ public class ListController extends HttpServlet {
 		// page 3: start 17
 		try  {
 			List<Product> ls = new ListProductDAO().search("",start, total);
+			List<Product> popularProduct = new ListProductDAO().getPopularProduct();
 			request.setAttribute("products", ls);
+			request.setAttribute("popularProduct", popularProduct);
 			getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
 		} catch (Exception e) {
 			Logger.getLogger(ListController.class.getName()).log(Level.SEVERE, null, e);

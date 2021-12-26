@@ -22,7 +22,7 @@
 		<div style="height: 500px">
 			<h1 class="text-center text-success">
 				You haven't order any thing yet! <br> Go to <a
-					href="/ListController">Home Page</a> and buy some one please! (^ .
+					href="/home">Home Page</a> and buy some one please! (^ .
 				^)
 			</h1>
 		</div>
