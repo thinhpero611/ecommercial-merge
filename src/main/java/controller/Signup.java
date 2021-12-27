@@ -89,20 +89,23 @@ public class Signup extends HttpServlet {
 			
 			// validate user and password 
 			if (!acc.validate()) {
-				session.setAttribute("error", acc.getMessage());
-				getServletContext().getRequestDispatcher("/login.jsp?action=signup").forward(request, response);			
+				request.setAttribute("error", acc.getMessage());
+				request.getRequestDispatcher("/login.jsp?action=signup").forward(request, response);
+				return;
 			}
 						
 			// check password client send are the same
 			if (!password.equalsIgnoreCase(repeatPassword)) {
-				session.setAttribute("error", "password is not the same");
-				getServletContext().getRequestDispatcher("/login.jsp?action=signup").forward(request, response);
+				request.setAttribute("error", "password is not the same");
+				request.getRequestDispatcher("/login.jsp?action=signup").forward(request, response);
+				return;
 			}
 			
 			// check if user email is exist in database
 			if (userEmail != null && accDAO.exist(userEmail)) {
-				session.setAttribute("error", "email is already exist!");
-				getServletContext().getRequestDispatcher("/login.jsp?action=signup").forward(request, response);
+				request.setAttribute("error", "email is already exist!");
+				request.getRequestDispatcher("/login.jsp?action=signup").forward(request, response);
+				return;
 			}
 			
 			// create new account 

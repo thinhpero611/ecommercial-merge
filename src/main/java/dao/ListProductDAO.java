@@ -50,7 +50,7 @@ public class ListProductDAO {
 	}
 	
 	public List<Product> getPopularProduct() throws SQLException, ClassNotFoundException {
-List<Product> ls = new ArrayList<Product>();
+		List<Product> ls = new ArrayList<Product>();
 		
 		// get connection 
 		Connection conn = new DBContext().getConnection();

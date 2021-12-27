@@ -3,24 +3,30 @@
 // initial loading is sign in 
 boolean isSignin = true;
 String action = request.getParameter("action");
+out.println(action);
+// initial using cookie is true
+boolean isUseCookie = true;
+
+// if send request to server
+if (action != null) isUseCookie = false;
 
 String username = null;
 String password = null;
 String firstname = (String) request.getAttribute("firstname");
 String lastname = (String) request.getAttribute("lastname");
-String error = (String)session.getAttribute("error");
+String error = (String)request.getAttribute("error");
 
 // use this to switch between sign in and sign up
 if (action != null && action.equals("signup")) {
 	isSignin = false;
 	username = (String) request.getAttribute("username");
 	password = (String) request.getAttribute("password");
-	error = (String)session.getAttribute("error");
+	error = (String)request.getAttribute("error");
 	
 } else {
 // get username and password in cookie store in local brower to login
 Cookie[] cookies = request.getCookies();
-if (cookies != null) {
+if (isUseCookie && cookies != null) {
 	for (Cookie retrievedCookie : cookies) {
 		if (retrievedCookie.getName().equals("username")) {
 			username = retrievedCookie.getValue();

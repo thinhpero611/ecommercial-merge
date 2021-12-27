@@ -62,13 +62,13 @@ public class Login extends HttpServlet {
 			acc.setUser(userEmail);
 			acc.setPassword(password);
 			
-			// send  username and pwd to client in order to let user modify it
+			// send  username and pwd to client in order to modify it
 			request.setAttribute("username", userEmail);
 			request.setAttribute("password", password);
 						
 			// validate user and password 
 			if (!acc.validate()) {
-				session.setAttribute("error", acc.getMessage());
+				request.setAttribute("error", acc.getMessage());
 				getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);			
 			}
 						
@@ -97,7 +97,7 @@ public class Login extends HttpServlet {
 				conn.close();
 			} else {
 				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-				session.setAttribute("error", "username or password is incorectly");
+				request.setAttribute("error", "username or password is incorectly");
 				rd.include(request, response);
 			}
 		} catch (NullPointerException e) {
